@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  News.swift
 //  HN
 //
 //  Created by Tiz on 28/9/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class News: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
