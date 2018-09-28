@@ -15,4 +15,5 @@ final class NewsTableViewCell: UITableViewCell, ReuseIdentifierProviding {
     func configure(item: Item) {
         self.title.text = item.title
     }
+
 }

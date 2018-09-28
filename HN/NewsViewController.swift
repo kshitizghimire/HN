@@ -19,11 +19,15 @@ final class NewsViewController: UIViewController {
 
         super.init(coder: aDecoder)
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.viewModel.deleagate = self
+        self.loadData()
+    }
 
+   private func loadData() {
         let firebaseRootReference = Database.database().reference(withPath: "v0")
         let topStories = firebaseRootReference.child(Constants.topStories)
 
@@ -32,25 +36,26 @@ final class NewsViewController: UIViewController {
                 guard
                     let snapshot = child as? DataSnapshot,
                     let value = snapshot.value
-                    else { return }
+                    else {
+                        return
+                }
 
-                let itemID = "item/\(value)"
+                let itemID = "\(Constants.item)/\(value)"
 
                 let itemReference = firebaseRootReference.child(itemID)
 
                 itemReference.observeSingleEvent(of: .value, with: { (snapshot) in
-                    self.viewModel.update(item: snapshot.toItem!)
+                    self.viewModel.update(item: snapshot.toItem)
                 })
-
             }
-
         })
-
     }
 
     private struct Constants {
         static let topStories = "topstories"
+        static let item = "item"
     }
+
 }
 
 extension NewsViewController: UITableViewDataSource {
@@ -60,19 +65,21 @@ extension NewsViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.reuseIdentifier, for: indexPath) as! NewsTableViewCell
+        let cell: NewsTableViewCell = tableView.dequeueReusableCell(for: indexPath)
 
         cell.configure(item: self.viewModel.item(at: indexPath))
 
         return cell
     }
+
 }
 
 extension NewsViewController: NewsViewModelDelegate {
+
     func refreshView(_ viewModel: NewsViewModel) {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
-
     }
+
 }

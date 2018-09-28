@@ -9,7 +9,9 @@
 import Foundation
 
 protocol NewsViewModelDelegate: AnyObject {
+
     func refreshView(_ viewModel: NewsViewModel)
+
 }
 
 final class NewsViewModel {
@@ -24,10 +26,14 @@ final class NewsViewModel {
         return self.items[indexPath.row]
     }
 
-    func update(item: Item) {
+    func update(item: Item?) {
+        guard let item = item else {
+            return
+        }
         self.items.append(item)
         deleagate?.refreshView(self)
     }
 
     private var items: [Item] = []
+
 }
