@@ -13,7 +13,7 @@ protocol NewsViewModelDelegate: AnyObject {
 }
 
 final class NewsViewModel {
-    private var items: [Item] = []
+
     weak var deleagate: NewsViewModelDelegate?
 
     var noOfRows: Int {
@@ -23,9 +23,11 @@ final class NewsViewModel {
     func item(at indexPath: IndexPath) -> Item {
         return self.items[indexPath.row]
     }
-    func update(items: [Item]) {
-        self.items = items
+
+    func update(item: Item) {
+        self.items.append(item)
         deleagate?.refreshView(self)
     }
 
+    private var items: [Item] = []
 }

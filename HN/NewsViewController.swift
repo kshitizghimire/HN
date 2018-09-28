@@ -23,28 +23,28 @@ final class NewsViewController: UIViewController {
         super.viewDidLoad()
 
         self.viewModel.deleagate = self
-        self.tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.reuseIdentifier)
 
         let firebaseRootReference = Database.database().reference(withPath: "v0")
         let topStories = firebaseRootReference.child(Constants.topStories)
-        topStories.observe(.value) { (snapshot) in
-            for child in snapshot.children {
 
+        topStories.observeSingleEvent(of: .value, with: { (snapshot) in
+            for child in snapshot.children {
                 guard
                     let snapshot = child as? DataSnapshot,
                     let value = snapshot.value
                     else { return }
 
                 let itemID = "item/\(value)"
-                var items: [Item?] = []
+
                 let itemReference = firebaseRootReference.child(itemID)
-                itemReference.observe(.value, with: { (item) in
-                    items.append(item.toItem)
+
+                itemReference.observeSingleEvent(of: .value, with: { (snapshot) in
+                    self.viewModel.update(item: snapshot.toItem!)
                 })
 
-                self.viewModel.update(items: items.compactMap { $0 })
             }
-        }
+
+        })
 
     }
 
@@ -70,6 +70,9 @@ extension NewsViewController: UITableViewDataSource {
 
 extension NewsViewController: NewsViewModelDelegate {
     func refreshView(_ viewModel: NewsViewModel) {
-        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+
     }
 }

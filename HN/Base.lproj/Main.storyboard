@@ -44,7 +44,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="title" destination="Gkb-vx-Kt0" id="F8H-sr-P4l"/>
+                                            <outlet property="title" destination="Gkb-vx-Kt0" id="YUR-qw-BlW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
