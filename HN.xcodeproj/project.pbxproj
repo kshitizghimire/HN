@@ -16,6 +16,7 @@
 		76546144215DA9F3007A6F0C /* HNTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76546143215DA9F3007A6F0C /* HNTests.swift */; };
 		76546152215DAB3B007A6F0C /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76546151215DAB3B007A6F0C /* NewsViewModel.swift */; };
 		76546154215DAE73007A6F0C /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76546153215DAE73007A6F0C /* NewsTableViewCell.swift */; };
+		76546156215DD540007A6F0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76546155215DD540007A6F0C /* GoogleService-Info.plist */; };
 		8BD26B85E5F6778B0B97E963 /* Pods_HN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E20F4673BE787A3186D05C /* Pods_HN.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		76546145215DA9F3007A6F0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76546151215DAB3B007A6F0C /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		76546153215DAE73007A6F0C /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		76546155215DD540007A6F0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A2E20F4673BE787A3186D05C /* Pods_HN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE86EC75200EE92A315E8251 /* Pods_HNTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HNTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -143,6 +145,7 @@
 		7654614F215DAA72007A6F0C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				76546155215DD540007A6F0C /* GoogleService-Info.plist */,
 				76546135215DA9F3007A6F0C /* Assets.xcassets */,
 			);
 			name = Resources;
@@ -243,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76546139215DA9F3007A6F0C /* LaunchScreen.storyboard in Resources */,
+				76546156215DD540007A6F0C /* GoogleService-Info.plist in Resources */,
 				76546136215DA9F3007A6F0C /* Assets.xcassets in Resources */,
 				76546134215DA9F1007A6F0C /* Main.storyboard in Resources */,
 			);
@@ -284,11 +288,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HN/Pods-HN-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

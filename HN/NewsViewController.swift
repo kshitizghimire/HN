@@ -7,12 +7,25 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 final class NewsViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let firebaseRef = Database.database().reference(withPath: "v0")
+        let topStories = firebaseRef.child("topstories")
+        topStories.observe(.value) { (snapshot) in
+            print(snapshot)
+        }
+        
+        
+        
+    }
+    
+    private struct Constants {
+        static let firebaseRef = "https://hacker-news.firebaseio.com/"
     }
 }
 

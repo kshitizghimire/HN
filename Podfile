@@ -7,6 +7,7 @@ target 'HN' do
 
   # Pods for HN
   pod 'Firebase/Core'
+  pod 'Firebase/Database'
 
   target 'HNTests' do
     inherit! :search_paths
