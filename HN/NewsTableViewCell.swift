@@ -8,17 +8,11 @@
 
 import UIKit
 
-final class NewsTableViewCell: UITableViewCell {
+final class NewsTableViewCell: UITableViewCell, ReuseIdentifierProviding {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet private weak var title: UILabel!
+
+    func configure(item: Item) {
+        self.title.text = item.title
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
